@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\cms\ListeningController;
 use App\Http\Controllers\cms\PracticeController;
+use App\Http\Controllers\cms\ReadingController;
 use App\Http\Controllers\cms\SpeakingController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,9 +10,6 @@ Route::prefix('cms')->name('cms.')->middleware(['auth'])->group(function () {
     Route::get('/dashboard',    [PracticeController::class,'dashboard'])->name('dashboard');
     Route::get('/chat',         [PracticeController::class,'chat'])->name('chat');
     Route::post('/ask-ai',      [PracticeController::class,'askAI'])->name('askAi');
-    Route::get('/reading',      [PracticeController::class,'reading'])->name('reading');
-    Route::get('/listening',    [PracticeController::class,'listening'])->name('listening');
-    // Route::get('/speaking',     [PracticeController::class,'speaking'])->name('speaking');
     Route::post('/save-session',[PracticeController::class,'saveSession'])->name('saveSession');
     Route::get('/progress',     [PracticeController::class,'progress'])->name('progress');
 
@@ -22,4 +20,8 @@ Route::prefix('cms')->name('cms.')->middleware(['auth'])->group(function () {
     // ListeningController
     Route::get('/listening',            [ListeningController::class,'index'])->name('listening');
     Route::post('/listening/evaluate',  [ListeningController::class,'evaluate'])->name('listening.evaluate');
+
+    //ReadingController
+    Route::get('/reading',              [ReadingController::class,'index'])->name('reading');
+    Route::post('/reading/evaluate',    [ReadingController::class,'evaluate'])->name('reading.evaluate');
 });

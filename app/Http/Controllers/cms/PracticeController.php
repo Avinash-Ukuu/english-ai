@@ -43,36 +43,6 @@ class PracticeController extends Controller
         return back();
     }
 
-    public function reading()
-    {
-
-        $response = Http::post('http://localhost:11434/api/generate', [
-            "model" => "llama3",
-            "prompt" => "Create a short English reading paragraph for beginners with one question.",
-            "stream" => false
-        ]);
-
-        $content = $response->json()['response'];
-
-        return view('cms.reading', compact('content'));
-    }
-
-    // public function listening()
-    // {
-
-    //     $sentence = "Practice English every day to improve your communication skills.";
-
-    //     return view('cms.listening', compact('sentence'));
-    // }
-
-    // public function speaking()
-    // {
-
-    //     $sentence = "Consistency is the key to success.";
-
-    //     return view('cms.speaking', compact('sentence'));
-    // }
-
     public function saveSession(Request $request)
     {
 
