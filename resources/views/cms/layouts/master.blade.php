@@ -54,7 +54,7 @@
                 <h4 class="p-3">English AI</h4>
 
                 <a href="{{ route('cms.dashboard') }}">Dashboard</a>
-                <a href="{{ route('cms.chat') }}">AI Chat</a>
+                <a href="{{ route('cms.conversation') }}">AI Chat</a>
                 <a href="{{ route('cms.reading') }}">Reading</a>
                 <a href="{{ route('cms.listening') }}">Listening</a>
                 <a href="{{ route('cms.speaking') }}">Speaking</a>

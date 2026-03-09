@@ -1,17 +1,17 @@
 <?php
 
+use App\Http\Controllers\cms\ConversationController;
+use App\Http\Controllers\cms\DashboardController;
 use App\Http\Controllers\cms\ListeningController;
 use App\Http\Controllers\cms\PracticeController;
+use App\Http\Controllers\cms\ProgressController;
 use App\Http\Controllers\cms\ReadingController;
 use App\Http\Controllers\cms\SpeakingController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('cms')->name('cms.')->middleware(['auth'])->group(function () {
-    Route::get('/dashboard',    [PracticeController::class,'dashboard'])->name('dashboard');
-    Route::get('/chat',         [PracticeController::class,'chat'])->name('chat');
-    Route::post('/ask-ai',      [PracticeController::class,'askAI'])->name('askAi');
-    Route::post('/save-session',[PracticeController::class,'saveSession'])->name('saveSession');
-    Route::get('/progress',     [PracticeController::class,'progress'])->name('progress');
+    //Dashboard
+    Route::get('/dashboard',            [DashboardController::class,'dashboard'])->name('dashboard');
 
     //SpeakingController
     Route::get('/speaking',             [SpeakingController::class,'index'])->name('speaking');
@@ -24,4 +24,11 @@ Route::prefix('cms')->name('cms.')->middleware(['auth'])->group(function () {
     //ReadingController
     Route::get('/reading',              [ReadingController::class,'index'])->name('reading');
     Route::post('/reading/evaluate',    [ReadingController::class,'evaluate'])->name('reading.evaluate');
+
+    //ConversationController
+    Route::get('/conversation',         [ConversationController::class,'index'])->name('conversation');
+    Route::post('/conversation/send',   [ConversationController::class,'send'])->name('conversation.send');
+
+    //ProgressController
+    Route::get('/progress',             [ProgressController::class,'index'])->name('progress');
 });
